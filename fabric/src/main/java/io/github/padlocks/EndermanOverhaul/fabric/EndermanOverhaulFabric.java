@@ -1,18 +1,13 @@
 package io.github.padlocks.EndermanOverhaul.fabric;
 
-import io.github.padlocks.EndermanOverhaul.client.render.entity.BadlandsHoodRenderer;
-import io.github.padlocks.EndermanOverhaul.common.item.ModArmorItem;
-import io.github.padlocks.EndermanOverhaul.common.registry.ModItems;
 import io.github.padlocks.EndermanOverhaul.core.EndermanOverhaul;
 import net.fabricmc.api.ModInitializer;
-import net.minecraft.util.Identifier;
-import software.bernie.geckolib3.renderers.geo.GeoArmorRenderer;
 
 public class EndermanOverhaulFabric implements ModInitializer {
     @Override
     public void onInitialize() {
         EndermanOverhaul.PLATFORM.setup();
-        //GeoArmorRenderer.registerArmorRenderer(new BadlandsHoodRenderer(), ModItems.BADLANDS_HOOD);
+        //GeoArmorRenderer.registerArmorRenderer(new HoodArmorRenderer(), ModItems.BADLANDS_HOOD);
 //
 //        ModItems.getModeledArmor().values().forEach(registrySupplier -> {
 //            ModArmorItem armor = registrySupplier.get();

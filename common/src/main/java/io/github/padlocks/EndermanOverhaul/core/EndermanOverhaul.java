@@ -1,5 +1,6 @@
 package io.github.padlocks.EndermanOverhaul.core;
 
+import com.fasterxml.jackson.databind.ser.Serializers;
 import dev.architectury.injectables.annotations.ExpectPlatform;
 import gg.moonflower.pollen.api.platform.Platform;
 import gg.moonflower.pollen.api.registry.client.EntityRendererRegistry;
@@ -18,6 +19,7 @@ import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.RenderLayers;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.render.block.entity.SkullBlockEntityRenderer;
+import net.minecraft.client.render.entity.EntityRenderer;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -77,8 +79,8 @@ public class EndermanOverhaul {
         GeckoLib.initialize();
     }
 
-    private static <E extends BaseEnderman> EntityRendererFactory<E> createRenderer(EndermanType type) {
-        return manager -> new EndermanRenderer<>(manager, new EndermanModel<>(type));
+    private static EntityRendererFactory<BaseEnderman> createRenderer(EndermanType type) {
+        return manager -> new EndermanRenderer(manager, new EndermanModel<>(type), type);
     }
 
     public static <E extends Entity> void registerRenderer(Supplier<EntityType<E>> entity, EntityRendererFactory<E> renderer) {

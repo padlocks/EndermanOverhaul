@@ -7,7 +7,7 @@ import net.minecraft.util.Identifier;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
 
 public class EndermanModel <E extends BaseEnderman> extends AnimatedGeoModel<E> {
-    private final EndermanType type;
+    public final EndermanType type;
     public boolean carryingBlock;
     public boolean angry;
 

@@ -5,19 +5,18 @@ import io.github.padlocks.EndermanOverhaul.common.entity.ReplacedEnderman;
 import io.github.padlocks.EndermanOverhaul.core.EndermanOverhaul;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.render.RenderLayer;
-import net.minecraft.client.render.VertexConsumer;
-import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRendererFactory;
-import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.util.Identifier;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import net.minecraft.client.render.entity.feature.EndermanBlockFeatureRenderer;
 import software.bernie.geckolib3.renderers.geo.GeoReplacedEntityRenderer;
+import software.bernie.geckolib3.renderers.geo.layer.LayerGlowingAreasGeo;
+
 @Environment(EnvType.CLIENT)
 public class ReplacedEndermanRenderer extends GeoReplacedEntityRenderer<ReplacedEnderman> {
     public ReplacedEndermanRenderer(EntityRendererFactory.Context context) {
         super(context, new ReplacedEndermanModel(), new ReplacedEnderman());
         EndermanOverhaul.registerReplacedEntity(ReplacedEnderman.class, this);
+        //this.addLayer(new LayerGlowingAreasGeo(this));
+        //this.addLayer(new EndermanBlockFeatureRenderer(this));
     }
 
 //    @Override

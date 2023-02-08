@@ -647,9 +647,9 @@ public class BaseEnderman extends HostileEntity implements Angerable, AnimatedEn
             if (blockState3 != null) {
                 blockState3 = Block.postProcessState(blockState3, this.enderman.world, blockPos);
                 if (this.canPlaceBlock(level, blockPos, blockState3, blockState, blockState2, blockPos2)) {
-                    level.setBlockState(blockPos, blockState3, 3);
-                    level.emitGameEvent(this.enderman, GameEvent.BLOCK_PLACE, blockPos);
-                    this.enderman.setCarriedBlock(null);
+//                    level.setBlockState(blockPos, blockState3, 3);
+//                    level.emitGameEvent(this.enderman, GameEvent.BLOCK_PLACE, blockPos);
+//                    this.enderman.setCarriedBlock(null);
                 }
 
             }
@@ -689,7 +689,7 @@ public class BaseEnderman extends HostileEntity implements Angerable, AnimatedEn
             Vec3d vec32 = new Vec3d((double)i + 0.5, (double)j + 0.5, (double)k + 0.5);
             BlockHitResult blockHitResult = level.raycast(new RaycastContext(vec3, vec32, net.minecraft.world.RaycastContext.ShapeType.OUTLINE, FluidHandling.NONE, this.enderman));
             boolean bl = blockHitResult.getBlockPos().equals(blockPos);
-            if (blockState.isIn(BlockTags.ENDERMAN_HOLDABLE) && bl) {
+            if ((blockState.isIn(BlockTags.ENDERMAN_HOLDABLE) || enderman.canPickupSpecificBlock(blockState)) && bl) {
                 level.removeBlock(blockPos, false);
                 level.emitGameEvent(this.enderman, GameEvent.BLOCK_DESTROY, blockPos);
                 this.enderman.setCarriedBlock(blockState.getBlock().getDefaultState());
